@@ -34,9 +34,11 @@ export class PainelComponent implements OnInit {
 
     if (this.rodadaFrase.frasePtBr.toLowerCase() == this.resposta.toLowerCase()) {      
       alert("A tradução está correta!")
+
       this.rodada++      
       this.rodadaFrase = this.Frases[this.rodada]
       this.count_progresso = this.count_progresso + (100 / this.Frases.length)
+      
       console.log(this.count_progresso)
     } else {
       alert("A tradução está errada!")
