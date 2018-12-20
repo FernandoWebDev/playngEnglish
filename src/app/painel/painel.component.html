@@ -11,11 +11,11 @@
 
         <div class="row">
             <div class="col">
-                <h6>Traduza a frase:</h6>
-                <p>How are you?</p>
+                <h6>{{ instrucao }}</h6>
+                <p>{{Frases[0].fraseEng}}</p>
 
                 <div class="form-group">
-                    <textarea class="form-control" rows="3"></textarea>
+                    <textarea class="form-control" (input)="atualizaResposta($event)" rows="3"></textarea>
                 </div>                
             </div>
         </div>
