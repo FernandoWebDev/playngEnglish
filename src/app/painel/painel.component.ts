@@ -12,16 +12,18 @@ export class PainelComponent implements OnInit {
 
   public Frases: Frase[] = frases
   public instrucao: string = "Traduza a frase"
-  public resposta: string
+  public resposta: string = ""
 
   public rodada: number = 0
   public rodadaFrase: Frase
 
   public count_progresso: number = 0
+
+  public tentativas: number = 3
   
   constructor() {
-    this.rodadaFrase = this.Frases[this.rodada]
-   }
+    this.atualizaRodada()
+  }
 
   ngOnInit() {
   }
@@ -36,13 +38,19 @@ export class PainelComponent implements OnInit {
       alert("A tradução está correta!")
 
       this.rodada++      
-      this.rodadaFrase = this.Frases[this.rodada]
-      this.count_progresso = this.count_progresso + (100 / this.Frases.length)
-      
-      console.log(this.count_progresso)
+      this.atualizaRodada()
+      this.count_progresso = this.count_progresso + (100 / this.Frases.length)      
     } else {
-      alert("A tradução está errada!")
-    }    
+      this.tentativas--
+
+      if (this.tentativas === -1) {
+        alert('Você perdeu todas as tentativas')
+      }
+    }
   }
 
+  public atualizaRodada(): void {
+    this.rodadaFrase = this.Frases[this.rodada]
+    this.resposta = ''
+  }  
 }
