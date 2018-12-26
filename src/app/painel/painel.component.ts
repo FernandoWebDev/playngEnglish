@@ -1,13 +1,15 @@
-import { Component, OnInit, EventEmitter, Output } from '@angular/core'
+import { Component, OnInit, EventEmitter, Output, OnDestroy } from '@angular/core'
 
 import { Frase } from '../shared/frase.model';
 import { frases } from './frases-mock';
 
+declare function JSExterno(): any;
+
 @Component({
   selector: 'app-painel',
   templateUrl: './painel.component.html',
-  styleUrls: ['./painel.component.css']
-})
+  styleUrls: ['./painel.component.css']})
+
 export class PainelComponent implements OnInit {
 
   public Frases: Frase[] = frases
@@ -28,6 +30,9 @@ export class PainelComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  ngOnDestroy() {
   }
 
   public atualizaResposta(resposta: Event): void {
