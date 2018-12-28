@@ -23,6 +23,8 @@ export class PainelComponent implements OnInit {
 
   public tentativas: number = 3
 
+  public fraseCorreta: string
+
   @Output() public encerrarJogo: EventEmitter<string> = new EventEmitter()
   
   constructor() {
@@ -36,7 +38,7 @@ export class PainelComponent implements OnInit {
   }
 
   public atualizaResposta(resposta: Event): void {
-    this.resposta = (<HTMLInputElement>resposta.target).value    
+    this.resposta = (<HTMLInputElement>resposta.target).value  
   }  
 
   public verificarResposta(): void {
@@ -60,6 +62,8 @@ export class PainelComponent implements OnInit {
     } else {
 
       this.tentativas--
+
+      this.fraseCorreta = this.rodadaFrase.frasePtBr
 
       if (this.tentativas === -1) {
         this.encerrarJogo.emit('derrota')
