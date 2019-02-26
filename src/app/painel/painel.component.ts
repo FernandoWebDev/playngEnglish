@@ -45,7 +45,6 @@ export class PainelComponent implements OnInit {
 
   public atualizaResposta(resposta: Event): void {
     this.resposta = (<HTMLInputElement>resposta.target).value  
-    this.trocaParaVerificar()
   }  
 
   public verificarResposta(): void {
@@ -72,8 +71,7 @@ export class PainelComponent implements OnInit {
       if (this.tentativas === -1) {
         this.fimDeJogo()
       }
-    }    
-      
+    }
   }
 
   public atualizaRodada(): void {
@@ -91,7 +89,8 @@ export class PainelComponent implements OnInit {
       this.rodadaFrase = this.Frases[this.rodada]
       this.resposta = ''    
       this.fraseCorreta = ''
-    }    
+      this.trocaParaVerificar()      
+    }      
   }  
 
   private trocaParaProsseguir(): void {
